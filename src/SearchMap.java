@@ -75,8 +75,9 @@ public class SearchMap {
 		interpretData(graph);
 	}
 	
-	private static void interpretData(FlightMap fm) {
+	private static void interpretData(FlightMap fm) throws IOException {
 		fm.searchGraph();
 		fm.printParents();
+		fm.printResults();
 	}
 }
