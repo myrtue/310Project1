@@ -1,3 +1,4 @@
+package Project1;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,19 +13,20 @@ public class SearchMap {
 	 * @param args handles user input
 	 * @throws IOException handles exception from 
 	 */
+	private static String inputFile;
+	private static String outputFile;
 	
 	public static void main(String args[]) throws IOException {
-		System.out.println("Hello World!");
 		
-		//String inputFile = args[1];
-		//String outputFile = args[2];
+		inputFile = args[0];
+		outputFile = args[1];
 		
 		FileReader fr;
 		BufferedReader br;
 		
 		try {
 			//have it as inputFile for now, must change later to get user input
-			fr = new FileReader("inputFile.txt");
+			fr = new FileReader(inputFile);
 			br = new BufferedReader(fr);
 			readFile(br);
 		} catch (FileNotFoundException e) {
@@ -47,7 +49,7 @@ public class SearchMap {
 		
 		String originCity;
 		originCity = br.readLine();
-		FlightMap graph = new FlightMap("outputFile.txt", originCity);
+		FlightMap graph = new FlightMap(outputFile, originCity);
 		
 		System.out.println(originCity);
 		
@@ -83,7 +85,7 @@ public class SearchMap {
 			fromNode.addConnection(newEdge);
 			
 		}
-		graph.printGraph();
+		//graph.printGraph();
 		interpretData(graph);
 	}
 	/**This function is passed in the FlightMap and calls the functions to search and print the results of the search
@@ -93,7 +95,7 @@ public class SearchMap {
 	 */
 	private static void interpretData(FlightMap fm) throws IOException {
 		fm.searchGraph();
-		fm.printParents();
+		//fm.printParents();
 		fm.printResults();
 	}
 }

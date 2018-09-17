@@ -8,16 +8,19 @@
 	<property name="doc.dir" location="doc" />
 	<property name="dist.dir" location ="dist" />
 	
+	<!-- Initialize file system  -->
 	<target name="init" description="setup project directories">
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${doc.dir}" />
 		<mkdir dir="${dist.dir}" />
 	</target>
 	
+	<!-- Compiles the java code  -->
 	<target name="compile" depends="init" description="compile java sources">
 		<javac srcdir="${source.dir}" destdir="${build.dir}" />
 	</target>
 	
+	<!-- Cleans the files  -->
 	<target name="clean" description="tidy up the workspace">
 		<delete dir= "${build.dir}" />
 		<delete dir= "${doc.dir}" />
@@ -27,10 +30,12 @@
 		</delete>
 	</target>
 	
+	<!-- Generate documentation  -->
 	<target name="doc" depends="init" description="generate documentation">
 		<javadoc sourcepath="${source.dir}" destdir="${doc.dir}" />
 	</target>
 	
+	<!-- Generate project1.jar file  -->
 	<target name="dist" depends="compile" description="generate the distribution">
 	    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
 	    <jar destfile="${dist.dir}/project1.jar" basedir="${build.dir}"/>

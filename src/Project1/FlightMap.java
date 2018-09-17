@@ -1,3 +1,4 @@
+package Project1;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -130,25 +131,27 @@ public class FlightMap {
 		return result;
 	}
 	
-	public void printGraph() {
-		for(Map.Entry<String, City> e: cities.entrySet()) {
-			String key = e.getKey();
-			City c = e.getValue();
-			System.out.print("City: " + key + " --- ");
-			System.out.print("Destinations: ");
-			for(Flight f: c.connections) {
-				System.out.print(f.destination);
-			}
-			System.out.println("");
-		}
-	}
+	//print methods for testing purposes below, not necessary for final output
 	
-	public void printParents() {
-		for(Map.Entry<String, String> e: parents.entrySet()) {
-			String key = e.getKey();
-			String value = e.getValue();
-			System.out.println("City: " + key + " -- Parent: " + value);
-			
-		}
-	}
+//	public void printGraph() {
+//		for(Map.Entry<String, City> e: cities.entrySet()) {
+//			String key = e.getKey();
+//			City c = e.getValue();
+//			System.out.print("City: " + key + " --- ");
+//			System.out.print("Destinations: ");
+//			for(Flight f: c.connections) {
+//				System.out.print(f.destination);
+//			}
+//			System.out.println("");
+//		}
+//	}
+//	
+//	public void printParents() {
+//		for(Map.Entry<String, String> e: parents.entrySet()) {
+//			String key = e.getKey();
+//			String value = e.getValue();
+//			System.out.println("City: " + key + " -- Parent: " + value);
+//			
+//		}
+//	}
 }

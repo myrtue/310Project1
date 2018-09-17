@@ -1,3 +1,4 @@
+package Project1;
 import java.util.ArrayList;
 
 /*This class contains an array containing "Flight" objects, which store the associated origin, destination, and 
