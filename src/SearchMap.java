@@ -29,13 +29,13 @@ public class SearchMap {
 	
 	private static void readFile(BufferedReader br) throws IOException {
 		
-		//Declare the Routes object that will store all of the data from the file, then load it in
+		//Declare the FlightMap object as graph that will store all of the data from the file
 		
-		FlightMap graph = new FlightMap();
+		
 		
 		String originCity;
 		originCity = br.readLine();
-		graph.originCity = originCity;
+		FlightMap graph = new FlightMap("outputFile.txt", originCity);
 		
 		System.out.println(originCity);
 		
@@ -43,7 +43,6 @@ public class SearchMap {
 		
 		//This for loop reads the file, loads each line into Flight object, and adds the flight object to Routes
 		for(flight = br.readLine(); flight != null; flight = br.readLine()) {
-			//System.out.println(flight);
 			String[] parts = flight.split(" ");
 			
 			String origin;
@@ -61,24 +60,23 @@ public class SearchMap {
 			//If this node has not been created, create it
 			if(fromNode == null) {
 				fromNode = new City(origin);
-				//fromNode.addConnection(newEdge);
 				graph.cities.put(origin, fromNode);
 			}
 			
 			City toNode = graph.cities.get(destination);
 			if(toNode == null) {
 				toNode = new City(destination);
-				//toNode.addConnection(newEdge);
 				graph.cities.put(destination, toNode);
 			}
 			fromNode.addConnection(newEdge);
 			
-			
 		}
 		graph.printGraph();
+		interpretData(graph);
 	}
 	
-	private static void interpretData(FlightMap map) {
-		
+	private static void interpretData(FlightMap fm) {
+		fm.searchGraph();
+		fm.printParents();
 	}
 }
