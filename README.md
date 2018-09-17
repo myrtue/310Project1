@@ -6,3 +6,4 @@ When trying to call "java SearchMap input output", please be inside the /bin fol
 the notation "java Project1.SearchMap input output". This is because of the renamed package from default.
 
 
+**JUnit test files are in a separate folder within the project folder called /test **
