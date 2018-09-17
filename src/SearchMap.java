@@ -7,6 +7,12 @@ import java.util.Scanner;
 
 public class SearchMap {
 	
+	/**This class is the main method, it handles all user input from the command line
+	 * 
+	 * @param args handles user input
+	 * @throws IOException handles exception from 
+	 */
+	
 	public static void main(String args[]) throws IOException {
 		System.out.println("Hello World!");
 		
@@ -26,6 +32,12 @@ public class SearchMap {
 		}
 		
 	}
+	
+	/**This method reads the entire input file and constructs the corresponding graph
+	 * 
+	 * @param br BufferedReader is passed into function in order to read the input file
+	 * @throws IOException handles exceptions related to reading file
+	 */
 	
 	private static void readFile(BufferedReader br) throws IOException {
 		
@@ -74,7 +86,11 @@ public class SearchMap {
 		graph.printGraph();
 		interpretData(graph);
 	}
-	
+	/**This function is passed in the FlightMap and calls the functions to search and print the results of the search
+	 * 
+	 * @param fm FlightMap object passed into this function in order to operate on it
+	 * @throws IOException handles filewriting exceptions
+	 */
 	private static void interpretData(FlightMap fm) throws IOException {
 		fm.searchGraph();
 		fm.printParents();

@@ -13,7 +13,12 @@ public class FlightMap {
 	
 	private HashMap<String, String> parents;
 	
-	//Sets the map to the Routes object with all of the data
+	
+	/**Constructor for FlightMap class
+	 * 
+	 * @param outputFile File the user wants to write to 
+	 * @param originCity Origin city the search is from
+	 */
 	public FlightMap(String outputFile, String originCity) {
 		this.originCity = originCity;
 		this.outputFile = outputFile;
@@ -23,12 +28,19 @@ public class FlightMap {
 		
 	}
 	
+	/**This method starts the DFS process
+	 * 
+	 */
 	public void searchGraph() {
 		City start = cities.get(originCity);
 		DFS(start);
 		
 	}
 	
+	/**DFS function recursively searches the graph, looking for unexplored nodes
+	 * 
+	 * @param c City node that is passed into DFS function each time
+	 */
 	public void DFS(City c) {
 		c.visited = true;
 		ArrayList<Flight> edges = c.connections;
@@ -42,6 +54,10 @@ public class FlightMap {
 		}
 	}
 	
+	/**The function compiles the results of the search into strings so that they can be written to the file
+	 * 
+	 * @throws IOException handles filewriting related exceptions
+	 */
 	public void printResults() throws IOException {
 		FileWriter fw = new FileWriter(outputFile);
 		String resultsString = "";
@@ -66,6 +82,12 @@ public class FlightMap {
 		
 	}
 	
+	/**This function uses the parents HashMap to construct the path backwards
+	 * 
+	 * @param c City node you want the path to
+	 * @return return a string that represents the path
+	 */
+	
 	public String getPath(String c) {
 		ArrayList<String> resultPath = new ArrayList<String>();
 		String current = c;
@@ -84,6 +106,12 @@ public class FlightMap {
 		System.out.println(result);
 		return result;
 	}
+	
+	/**This method returns the cost of the path to the city
+	 * 
+	 * @param c The city you want the cost of getting to 
+	 * @return returnt the cost of the path to get to the city in string form
+	 */
 	
 	public String getCost(String c) {
 		int totalCost = 0;
