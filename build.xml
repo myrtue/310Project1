@@ -7,6 +7,7 @@
 	<property name="build.dir" location="bin" />
 	<property name="doc.dir" location="doc" />
 	<property name="dist.dir" location ="dist" />
+
 	
 	<!-- Initialize file system  -->
 	<target name="init" description="setup project directories">
@@ -15,9 +16,11 @@
 		<mkdir dir="${dist.dir}" />
 	</target>
 	
+	
 	<!-- Compiles the java code  -->
 	<target name="compile" depends="init" description="compile java sources">
-		<javac srcdir="${source.dir}" destdir="${build.dir}" />
+		<javac srcdir="${source.dir}/Project1" destdir="${build.dir}" includeantruntime = "false">
+		</javac>
 	</target>
 	
 	<!-- Cleans the files  -->

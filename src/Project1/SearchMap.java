@@ -51,7 +51,7 @@ public class SearchMap {
 		originCity = br.readLine();
 		FlightMap graph = new FlightMap(outputFile, originCity);
 		
-		System.out.println(originCity);
+		//System.out.println(originCity);
 		
 		String flight;
 		
@@ -86,16 +86,15 @@ public class SearchMap {
 			
 		}
 		//graph.printGraph();
-		interpretData(graph);
+		writeData(graph);
 	}
 	/**This function is passed in the FlightMap and calls the functions to search and print the results of the search
 	 * 
 	 * @param fm FlightMap object passed into this function in order to operate on it
 	 * @throws IOException handles filewriting exceptions
 	 */
-	private static void interpretData(FlightMap fm) throws IOException {
+	private static void writeData(FlightMap fm) throws IOException {
 		fm.searchGraph();
-		//fm.printParents();
 		fm.printResults();
 	}
 }

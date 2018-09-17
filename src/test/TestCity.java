@@ -1,8 +1,11 @@
-package Project1;
+package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import Project1.City;
+import Project1.Flight;
 
 class TestCity {
 
@@ -20,6 +23,7 @@ class TestCity {
 		assertEquals("originTest", test.connections.get(0).origin);
 		assertEquals("destTest", test.connections.get(0).destination);
 		assertEquals(1000, test.connections.get(0).cost);
+
 	}
 
 }

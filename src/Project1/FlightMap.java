@@ -10,9 +10,8 @@ public class FlightMap {
 	//private Routes routesObject;
 	public String originCity;
 	public HashMap<String, City> cities;
-	private String outputFile;
-	
-	private HashMap<String, String> parents;
+	public String outputFile;
+	public HashMap<String, String> parents;
 	
 	
 	/**Constructor for FlightMap class
@@ -104,7 +103,7 @@ public class FlightMap {
 		if(resultPath.size() > 0) {
 			result += resultPath.get(0);
 		}
-		System.out.println(result);
+		//System.out.println(result);
 		return result;
 	}
 	
