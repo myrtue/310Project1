@@ -3,7 +3,7 @@ public class Flight {
 	
 	public String origin;
 	public String destination;
-	public double cost;
+	public int cost;
 	
 	/** Creates the Flight object containing all relevant info for a flight
 	 * 
@@ -13,7 +13,7 @@ public class Flight {
 	 * 
 	 */
 	
-	public Flight (String origin, String destination, double cost) {
+	public Flight (String origin, String destination, int cost) {
 		this.origin = origin;
 		this.destination = destination;
 		this.cost = cost;

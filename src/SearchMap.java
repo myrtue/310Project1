@@ -1,25 +1,84 @@
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class SearchMap {
 	
-	public static void main(String args[]) {
+	public static void main(String args[]) throws IOException {
 		System.out.println("Hello World!");
 		
-		String inputFile = args[1];
-		String outputFile = args[2];
+		//String inputFile = args[1];
+		//String outputFile = args[2];
+		
+		FileReader fr;
+		BufferedReader br;
 		
 		try {
-			Scanner s = new Scanner(new File(inputFile));
-			readFile(s);
+			//have it as inputFile for now, must change later to get user input
+			fr = new FileReader("inputFile.txt");
+			br = new BufferedReader(fr);
+			readFile(br);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
-	private static void readFile(Scanner s) {
+	private static void readFile(BufferedReader br) throws IOException {
+		
+		//Declare the Routes object that will store all of the data from the file, then load it in
+		
+		FlightMap graph = new FlightMap();
+		
+		String originCity;
+		originCity = br.readLine();
+		graph.originCity = originCity;
+		
+		System.out.println(originCity);
+		
+		String flight;
+		
+		//This for loop reads the file, loads each line into Flight object, and adds the flight object to Routes
+		for(flight = br.readLine(); flight != null; flight = br.readLine()) {
+			//System.out.println(flight);
+			String[] parts = flight.split(" ");
+			
+			String origin;
+			String destination;
+			int cost;
+			
+			origin = parts[0];
+			destination = parts[1];
+			cost = Integer.parseInt(parts[2]);
+			
+			//create a new edge
+			Flight newEdge = new Flight(origin, destination, cost);
+			
+			City fromNode = graph.cities.get(origin);
+			//If this node has not been created, create it
+			if(fromNode == null) {
+				fromNode = new City(origin);
+				//fromNode.addConnection(newEdge);
+				graph.cities.put(origin, fromNode);
+			}
+			
+			City toNode = graph.cities.get(destination);
+			if(toNode == null) {
+				toNode = new City(destination);
+				//toNode.addConnection(newEdge);
+				graph.cities.put(destination, toNode);
+			}
+			fromNode.addConnection(newEdge);
+			
+			
+		}
+		graph.printGraph();
+	}
+	
+	private static void interpretData(FlightMap map) {
 		
 	}
 }

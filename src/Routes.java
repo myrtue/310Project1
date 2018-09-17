@@ -4,15 +4,15 @@ import java.util.ArrayList;
  * cost of each flight in the input file along with the city we are originating from 
  */
 public class Routes {
-	private ArrayList<Flight> routes;
+	private ArrayList<Flight> cities;
 	private String originCity;
 	
 	public Routes() {
-		routes = new ArrayList<Flight>();
+		cities = new ArrayList<Flight>();
 	}
 
 	public void addFlight(Flight flight) {
-		routes.add(flight);
+		cities.add(flight);
 	}
 	
 	public void setOrigin(String origin) {
@@ -21,5 +21,14 @@ public class Routes {
 	
 	public String getOrigin() {
 		return originCity;
+	}
+	
+	public void printData() {
+		System.out.println("Printing data from Routes class.");
+		System.out.println(originCity);
+		for(int i = 0; i < cities.size(); i++) {
+			System.out.print(cities.get(i).origin + " " + cities.get(i).destination + " " + cities.get(i).cost);
+			System.out.println("");;
+		}
 	}
 }
