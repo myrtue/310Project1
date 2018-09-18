@@ -7,13 +7,17 @@ import org.junit.Test;
 import Project1.City;
 import Project1.Flight;
 
-class TestSearchMap {
+public class TestSearchMap {
 
 	/*
 	 * Since only methods inside of SearchMap.java are main(), one that reads the file, and one that writes the file,
 	 * there is no requirement for testing as of now. Sample createTestGraph() function will be called to create a 
 	 * test on if needed
 	 */
+	@Test
+	public void defaultTest() {
+		//shouldn't be anything here, just here for compilation purposes
+	}
 	
 	public static City createTestGraph() {
 		City test = new City("testCity");

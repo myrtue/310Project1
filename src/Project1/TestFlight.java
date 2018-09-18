@@ -4,12 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Project1.Flight;
-
-class TestFlight {
-
+public class TestFlight {
 	@Test
-	void testFlightConstructor() {
+	public void testFlightConstructor() {
 		Flight test = new Flight ("cityA", "cityB", 500);
 		
 		assertEquals("cityA", test.origin);

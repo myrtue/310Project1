@@ -8,10 +8,10 @@ import Project1.City;
 import Project1.Flight;
 import Project1.FlightMap;
 
-class TestFlightMap {
+public class TestFlightMap {
 
 	@Test
-	void testFlightMapConstructor() {
+	public void testFlightMapConstructor() {
 		FlightMap test = new FlightMap("output.txt", "originTest");
 		String outputTest = test.outputFile;
 		assertEquals("output.txt",outputTest);
@@ -20,7 +20,7 @@ class TestFlightMap {
 	}
 	
 	@Test
-	void testSearchGraph() {
+	public void testSearchGraph() {
 		FlightMap testFM = new FlightMap("output.txt", "testCity");
 		City t1 = new City("destTest1");
 		City t2 = new City("destTest2");
@@ -38,7 +38,7 @@ class TestFlightMap {
 	}
 	
 	@Test
-	void testDFS() {
+	public void testDFS() {
 		FlightMap test = createTestFlightMap();
 		test.DFS(test.cities.get("testCity"));
 		
@@ -49,7 +49,7 @@ class TestFlightMap {
 	}
 	
 	@Test
-	void testGetPath() {
+	public void testGetPath() {
 		FlightMap test = createTestFlightMap();
 		test.DFS(test.cities.get("testCity"));
 		
@@ -59,7 +59,7 @@ class TestFlightMap {
 	}
 	
 	@Test
-	void testGetCost() {
+	public void testGetCost() {
 		FlightMap test = createTestFlightMap();
 		test.DFS(test.cities.get("testCity"));
 		
