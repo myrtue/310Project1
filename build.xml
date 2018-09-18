@@ -7,7 +7,23 @@
 	<property name="build.dir" location="bin" />
 	<property name="doc.dir" location="doc" />
 	<property name="dist.dir" location ="dist" />
-
+	<property name="lib.dir" location = "lib" />
+	<property name="test.dir" location = "src/test"/>
+	<property name = "test.build.dir" location = "bin/test"/>
+	<property environment = "env" />
+	<property name = "junit.output.dir" value = "junit/" />
+	
+	<path id = "JUnit 4.libraryclasspath">
+		<pathelement location = "${lib.dir}/junit-4.12.jar" />
+		<pathelement location = "${lib.dir}/hamcrest-all-1.3.jar"/>
+		<pathelement location = "${lib.dir}/junit.jar"/>
+		<pathelement location = "${build.dir}"/>
+	</path>
+	
+	<path id = "Project1.classpath">
+		<pathelement location = "bin/Project1"/>
+		<path refid = "JUnit 4.libraryclasspath"/>
+	</path>
 	
 	<!-- Initialize file system  -->
 	<target name="init" description="setup project directories">
@@ -19,8 +35,7 @@
 	
 	<!-- Compiles the java code  -->
 	<target name="compile" depends="init" description="compile java sources">
-		<javac srcdir="${source.dir}/Project1" destdir="${build.dir}" includeantruntime = "false">
-		</javac>
+		<javac srcdir="${source.dir}/Project1" destdir="${build.dir}" includeantruntime = "false" classpathref = "Project1.classpath"/>
 	</target>
 	
 	<!-- Cleans the files  -->
@@ -28,6 +43,7 @@
 		<delete dir= "${build.dir}" />
 		<delete dir= "${doc.dir}" />
 		<delete dir= "${dist.dir}" />
+		<delete dir= "${test.build.dir}"/>
 		<delete>
 			<fileset defaultexcludes="no" dir="${source.dir}" includes="**/*~" />
 		</delete>
@@ -44,20 +60,18 @@
 	    <jar destfile="${dist.dir}/project1.jar" basedir="${build.dir}"/>
 	  </target>
 	
-	
-	
+			
 	<!-- Configuring settings for Junit test -->
 	<target name="test" depends="compile">
 	    <junit printsummary="on" haltonfailure="yes" fork="true">
 	        <classpath>
-	          <path refid="classpath.test"/>
-	          <pathelement location="${test.build.dir}"/>
+	          <path refid="Project1.classpath"/>
 	        </classpath>
 	        <formatter type="brief" usefile="false" />
-	        <batchtest>
-	            <fileset dir="${test.src.dir}" includes="**/*Test.java" />
-	        </batchtest>
+	    		<test name = "test.TestCity"/>
+	    		<test name = "test.TestFlight"/>
+	    		<test name = "test.TestFlightMap"/>
+	    		<test name = "test.TestSearchMap"/>
 	    </junit>
 	</target>
-	
 </project>

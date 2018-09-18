@@ -1,8 +1,8 @@
-package test;
+package Project1;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import Project1.City;
 import Project1.Flight;
@@ -13,7 +13,8 @@ class TestFlightMap {
 	@Test
 	void testFlightMapConstructor() {
 		FlightMap test = new FlightMap("output.txt", "originTest");
-		assertEquals("output.txt",test.outputFile);
+		String outputTest = test.outputFile;
+		assertEquals("output.txt",outputTest);
 		assertEquals("originTest", test.originCity);
 		assertEquals("!" , test.parents.get("originTest"));
 	}
